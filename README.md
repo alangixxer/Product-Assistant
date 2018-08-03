@@ -19,16 +19,9 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 ![](IMAGES/api-2.png)
 
-
-3. Enter ***table name above*** for the **Table name**. This field is case sensitive.
-
-<img src="IMAGES/api-3.png" alt="drawing" width="500px"/>
-
 4. In **Actions** click on **Create Resource**.
 
-
-![](IMAGES/api-3.png)
-
+<img src="IMAGES/api-3.png" alt="drawing" width="500px"/>
 
 5. Enter a **Resource Name** and the **Resource Path** will be autofilled as the same.  Leave Configure as proxy resource and Enable API Gateway CORS as blank. Click **Create Resource**.
 
@@ -39,7 +32,8 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 6. Click on the newly created resouce and click on **Actions**.  Select **Create Method**.
 
 
-![](IMAGES/api-5.png)
+<img src="IMAGES/api-5.png" alt="drawing" width="500px"/>
+
 
 
 7. Select **Post** and click the **check mark**.  For integration type, select **Lambda Function**.  **Use Lambda Proxy integration** should be left unchecked.  The **Region** must be the same as the Product_Assistant Lambda function created earlier.  Select **Product_Assistant** as the **Lambda Function**.  Keep **Use Default Timeout**.  Hit save and accept the warning after it pops up.
