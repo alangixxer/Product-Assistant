@@ -42,10 +42,19 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 ![](IMAGES/api-6.png)
 
 
-<!-- NEED IMAGE FOR THIS -->
-    ![Create table screenshot](../images/ddb-create-table.png)
+8. Select the newly created **Post** and then click on **Integration Request**.  
 
-1. Scroll to the bottom of the Overview section of your new table and note the **ARN**. You will use this in the next section.
+![](IMAGES/api-7.png)
+
+9. Once opened, click on **Mapping Templates** at the bottom.  Change **Request body passthrough** to **When there are no templates defined (recommended)**.  Click on the ***plus symbole*** to **Add mapping template**.  Add **application/x-www-form-urlencoded**.  Click the check mark next to the inserted content.  Below, a content box will appear. 
+
+![](IMAGES/api-8.png)
+
+10. Insert the below **code** into the content box.
+
+```python
+print()
+```
 
 </p></details>
 
