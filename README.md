@@ -10,31 +10,31 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 1. From the AWS Management Console, choose **Services** then select **API Gateway**.
 
-![](../IMAGES/api-1.png)
+![](IMAGES/api-1.png)
 
 2. Create a new API. The API in this example is the name is **ProductAssistantAPI**.
 
-![](../IMAGES/api-2.png)
+![](IMAGES/api-2.png)
 
 3. Enter ***table name above*** for the **Table name**. This field is case sensitive.
 
-![](../IMAGES/api-3.png)
+![](IMAGES/api-3.png)
 
 4. In **Actions** click on **Create Resource**.
 
-![](../IMAGES/api-3.png)
+![](IMAGES/api-3.png)
 
 5. Enter a **Resource Name** and the **Resource Path** will be autofilled as the same.  Leave Configure as proxy resource and Enable API Gateway CORS as blank. Click **Create Resource**.
 
-![](../IMAGES/api-4.png)
+![](IMAGES/api-4.png)
 
 6. Click on the newly created resouce and click on **Actions**.  Select **Create Method**.
 
-![](../IMAGES/api-5.png)
+![](IMAGES/api-5.png)
 
 7. Select **Post** and click the **check mark**.  For integration type, select **Lambda Function**.  **Use Lambda Proxy integration** should be left unchecked.  The **Region** must be the same as the Product_Assistant Lambda function created earlier.  Select **Product_Assistant** as the **Lambda Function**.  Keep **Use Default Timeout**.  Hit save and accept the warning after it pops up.
 
-![](../IMAGES/api-6.png)
+![](IMAGES/api-6.png)
 
 <!-- NEED IMAGE FOR THIS -->
     ![Create table screenshot](../images/ddb-create-table.png)
