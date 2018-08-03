@@ -52,8 +52,18 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 10. Insert the below **code** into the content box.
 
-```python
-print()
+```javascript
+#set($httpPost = $input.path('$').split("&"))
+{
+#foreach( $kvPair in $httpPost )
+ #set($kvTokenised = $kvPair.split("="))
+ #if( $kvTokenised.size() > 1 )
+   "$kvTokenised[0]" : "$kvTokenised[1]"#if( $foreach.hasNext ),#end
+ #else
+   "$kvTokenised[0]" : ""#if( $foreach.hasNext ),#end
+ #end
+#end
+}
 ```
 
 </p></details>
