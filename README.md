@@ -22,9 +22,7 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 3. Enter ***table name above*** for the **Table name**. This field is case sensitive.
 
-<img src="IMAGES/api-3.png" alt="drawing" width="200px"/>
-![](IMAGES/api-3.png =250x)
-
+<img src="IMAGES/api-3.png" alt="drawing" width="500px"/>
 
 4. In **Actions** click on **Create Resource**.
 
