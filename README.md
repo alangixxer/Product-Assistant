@@ -50,9 +50,9 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 ![](IMAGES/api-8.png)
 
-10. Insert the below **code** into the content box.
+10. Insert the below **code** into the content box.  This code was suggested by ***https://forums.aws.amazon.com/message.jspa?messageID=675886*** to split our HTTP parameters into JSON key/value pairs.
 
-```javascript
+```
 #set($httpPost = $input.path('$').split("&"))
 {
 #foreach( $kvPair in $httpPost )
@@ -66,8 +66,17 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 }
 ```
 
+11. Scroll up to the top and click on the blue **Method Execution** link.**Twilio** expects a 200 HTTP status code of type **application/xml**.  Click on the **Integration Response**. Expand the **200** Method Response Status, then expand the 'Body Mapping Templates'.  If there is an 'application/json' entry, remove that now.
 </p></details>
 
+![](IMAGES/api-9.png)
+
+12. Click on **add mapping template** and insert **application/xml**. Click the check mark.  Enter the below **code** into the context box. This will allow only the Lambda return fuction to pass through.
+
+```
+#set($inputRoot = $input.path('$')) 
+$inputRoot
+```
 ---
 
 ### 6. Set up a Twilio SNS Project.
