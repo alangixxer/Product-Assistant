@@ -48,7 +48,7 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 9. Once opened, click on **Mapping Templates** at the bottom.  Change **Request body passthrough** to **When there are no templates defined (recommended)**.  Click on the ***plus symbole*** to **Add mapping template**.  Add **application/x-www-form-urlencoded**.  Click the check mark next to the inserted content.  Below, a content box will appear. 
 
-![](IMAGES/api-8.png)
+<img src="IMAGES/api-8.png" alt="drawing" width="500px"/>
 
 10. Insert the below **code** into the content box.  This code was suggested by ***https://forums.aws.amazon.com/message.jspa?messageID=675886*** to split our HTTP parameters into JSON key/value pairs.
 
@@ -79,11 +79,11 @@ $inputRoot
 
 13. Click on the **Actions** drop down and select **Deploy API**.  
 
-![](IMAGES/api-10.png)
+<img src="IMAGES/api-10.png" alt="drawing" width="500px"/>
 
 14. Select a **New Stage* like **dev**.  Click on **Deploy**.
 
-![](IMAGES/api-11.png)
+<img src="IMAGES/api-11.png" alt="drawing" width="500px"/>
 
 15.  Take note of the **Invoke URL**.
 
