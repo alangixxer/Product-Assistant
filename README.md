@@ -85,7 +85,7 @@ $inputRoot
 
 <img src="IMAGES/api-11.png" alt="drawing" width="500px"/>
 
-15.  Take note of the **Invoke URL**.
+15.  Take note of the **Invoke URL**.  Your API is now complete.  Lets test it TODO.
 
 ![](IMAGES/api-12.png)
  
@@ -94,3 +94,21 @@ $inputRoot
 
 ### 6. Set up a Twilio SNS Project.
 
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+1.  Go to https://www.twilio.com/console/sms/dashboard and select **SMS** on the left hand side.  Create a new **Messaging Service** and select **Chat Bot/Interactive 2-Way**.
+
+<img src="IMAGES/sns-1.png" alt="drawing" width="200px"/>
+
+2.  Click the check box on the **Process Inbound Messages**.  Add the **Invoke** URL from the API step and instert it into the **Request URL** text block. 
+
+![](IMAGES/sns-2.png)
+
+3.  Click on **Numbers** on the left hand side.
+
+<img src="IMAGES/sns-3.png" alt="drawing" width="200px"/>
+</p></details>
+
+4.  Add a number to your project.  You are now able to test **Product Assistant**.
+---
