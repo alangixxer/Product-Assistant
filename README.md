@@ -79,7 +79,7 @@ $inputRoot
 
 13. Click on the **Actions** drop down and select **Deploy API**.  
 
-<img src="IMAGES/api-10.png" alt="drawing" width="500px"/>
+<img src="IMAGES/api-10.png" alt="drawing" width="200px"/>
 
 14. Select a **New Stage* like **dev**.  Click on **Deploy**.
 
