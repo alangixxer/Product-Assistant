@@ -76,6 +76,19 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 #set($inputRoot = $input.path('$')) 
 $inputRoot
 ```
+
+13. Click on the **Actions** drop down and select **Deploy API**.  
+
+![](IMAGES/api-10.png)
+
+14. Select a **New Stage* like **dev**.  Click on **Deploy**.
+
+![](IMAGES/api-11.png)
+
+15.  Take note of the **Invoke URL**.
+
+![](IMAGES/api-12.png)
+ 
 </p></details>
 ---
 
