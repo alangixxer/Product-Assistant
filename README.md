@@ -33,8 +33,6 @@ In this architecture, the customer will start their interaction with the TODO
 
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
 
------
-
 ### 1. Create an IAM Role for Your Lambda function
 
 Every Lambda function has an IAM role associated with it. This role defines what other AWS services the function is allowed to interact with. For the purposes of this workshop, you'll need to create an IAM role that grants your Lambda function permission to write logs to Amazon CloudWatch Logs, access to write items to your DynamoDB table, access to read and write to S3 and access to rekognition.
