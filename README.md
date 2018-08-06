@@ -1,11 +1,169 @@
-### 1. Create an IAM Role.
+# Product Assistant Workshop
+
+In this workshop you will deploy an application that receives a picture of a product, extracts the text from the picture and queries DynamoDB against the text found. If the text matches a DynamoDB entry, it will send the user a message asking them about what kind of information they want to know about the product. Additionally, the application saves the image to a S3 bucket. 
+
+The application architecture uses [AWS Identity and Access Management (IAM)](https://aws.amazon.com/iam/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), [Amazon S3](https://aws.amazon.com/s3/), [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [Twilio](https://www.twilio.com/), an API we will use to send and receive text messages. IAM allows you to set permissions for Lambda to access DynamoDB, your persitencce layer where users and product information will be stored. API Gateway will send the image to S3, where it will be saved.
+
+## Prerequisites
+
+### AWS Account
+
+In order to complete this workshop you will need an AWS Account with access to create AWS IAM, S3, DynamoDB, Lambda and API Gateway resources. The code and instructions in this workshop assume only one student is using a given AWS account at a time. If you try sharing an account with another student, you'll run into naming conflicts for certain resources. You can work around these by appending a unique suffix to the resources that fail to create due to conflicts, but the instructions do not provide details on the changes required to make this work.
+
+
+
+### Region Selection
+
+This workshop can be deployed in any AWS region that supports the following services:
+
+- AWS Lambda
+- Amazon API Gateway
+- Amazon S3
+- Amazon Rekognition
+- Amazon DynamoDB
+
+You can refer to the [region table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) in the AWS documentation to see which regions have the supported services.
+
+## Architecture Overview
+
+In this architecture, the customer will start their interaction with the TODO
+
+## Implementation Instructions
+
+Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
+
+---
+
+### 1. Create an IAM Role for Your Lambda function
+
+Every Lambda function has an IAM role associated with it. This role defines what other AWS services the function is allowed to interact with. For the purposes of this workshop, you'll need to create an IAM role that grants your Lambda function permission to write logs to Amazon CloudWatch Logs, access to write items to your DynamoDB table, access to read and write to S3 and access to rekognition.
+
+#### Instructions
+
+Use the IAM console to create a new role. Name it `PA_Lambda_Role` and select AWS Lambda for the role type.  There is no need to attach any policies, that will be completed in step 2.
+
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+1. From the AWS Management Console, click on **Services** and then select **IAM** in the Security, Identity & Compliance section.
+
+2. Select **Roles** in the left navigation bar and then choose **Create new role**.
+
+TODO
+
 </p></details>
 ---
 
-### 2. Create the lambda funciton.
+### 2. Create an Amazon DynamoDB Table
+
+Use the Amazon DynamoDB console to create a two DynamoDB tables. You will call your first table `PA_customers` and give it a partition key called `from_number` with type String. The table name and partition key are case sensitive. Make sure you use the exact IDs provided. Use the defaults for all other settings. 
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. From the AWS Management Console, choose **Services** then select **DynamoDB** under Databases.
+
+2. Choose **Create table**.
+
+3. Enter ***PA_customers*** for the **Table name**. This field is case sensitive.
+
+4. Enter ***from_number*** for the **Partition key** and select **String** for the key type. This field is case sensitive.
+
+5. Check the **Use default settings** box and choose **Create**.
+
+![Create table screenshot](IMAGES/ddb-create-table1.png)
+
+</p></details>
+
+Your second table will be named 'PA-Products' and its partition key will be `product_id`. Follow the instructions beloW:
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. From the AWS Management Console, choose **Services** then select **DynamoDB** under Databases.
+
+2. Choose **Create table**.
+
+3. Enter ***PA_Products*** for the **Table name**. This field is case sensitive.
+
+4. Enter ***product_id*** for the **Partition key** and select **String** for the key type. This field is case sensitive.
+
+5. Check the **Use default settings** box and choose **Create**.
+
+![Create table screenshot](IMAGES/ddb-create-table2.png)
+
+6. Once the table is created, you have to create an item in it. This will act as a place to put product information. Select the **Items** tab and click on **Create item**. A new window will pop up.
+
+7. Your first category will be your partition key. Enter the name of your first item here. We chose deeplens, but you can enter any value you want.
+
+8. Click on the **+** symbol and select **Append** (adds to the bottom) or **Insert** (adds to the top). From there, select the data type **String**. A new value pair will appear. To the left, enter **user manual** for the key. To the right, enter https://aws.amazon.com/deeplens/faqs/ .
+
+9. Repeat this process until you have entered all the items listed in the table below:
+
+| Key (left box)      | Data Type       | Value (right box)                          |
+|---------------------|-----------------|--------------------------------------------|
+|blog                 | String          | https://aws.amazon.com/blogs/aws/deeplens/ |
+|faqs                 | String          | https://aws.amazon.com/deeplens/faqs/      |
+|options              | List            | **See Instructions below**                 |
+
+10. Adding indexes to the list is similar to adding items, but you should make sure they are added to the list. To verify you're doing this correctly, you should confirm the List value is increasing every time you add an item. Below are the indexes of the **options** List:
+| Key (left box)      | Data Type       | Value (right box)                          |
+|---------------------|-----------------|--------------------------------------------|
+|0                    | String          | blog										 |
+|1	                  | String          | faqs								         |
+|2	                  | List            | user manual                                |
+
+11. Verify your items look like the image below:
+![Create item screenshot](IMAGES/ddb-create-item.png)
+</p></details>
+---
+
+### 3. Saving images to Amazon S3
+
+In this section you'll configure an Amazon Simple Storage Service (S3)  bucket where your images will be saved for later analysis. Your bucket is the location where your uploaded images will gets stored for later analysis. For the purposes of this module you'll use the Amazon S3 website endpoint URL that we supply. It takes the form `http://{your-bucket-name}.s3-website-{region}.amazonaws.com` or `bucket-name.s3-website.region.amazonaws.com` depending on the region you use. 
+
+#### Instructions
+
+Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your bucket's name must be globally unique across all regions and customers. We recommend using a name like `product-assistant-firstname-lastname`. If you get an error that your bucket name already exists, try adding additional numbers or characters until you find an unused name.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the AWS Management Console choose **Services** then select **S3** under Storage.
+
+1. Choose **+Create Bucket**
+
+1. Provide a globally unique name for your bucket such as `product-assistant-firstname-lastname`.
+
+1. Select the Region you've chosen to use for this workshop from the dropdown.
+
+1. Choose **Create** in the lower left of the dialog without selecting a bucket to copy settings from.
+
+    ![Create bucket screenshot](IMAGES/create-bucket.png)
+
+#### Bucket Content
+
+Leave the bucket empty for the time being. We will upload images into it later using Twilio.
+
+#### Access to files uploaded
+
+You can define who can access the content in your S3 buckets using a bucket policy. Bucket policies are JSON documents that specify what principals are allowed to execute various actions against the objects in your bucket.
+
+#### Access to your bucket
+
+By default your bucket will only be accessible by authenticated users with access to your AWS account. We will keep it this way. 
+
+</p></details>
+
+### 4. Create the lambda funciton
+
+AWS Lambda will do much of the heavy lifting in this application. It will track the status of the communication with Twillio, save the image to S3 and ensure Rekognition extracts text from the image. Additionally, it will query DynamoDB in search for word matches.
+
+#### Instructions
+
+Use the AWS Lambda console to create a new Lambda function called `lambda_function` that will handle image uploads. Use the provided [lambda_function.py](lambda_function.py) example implementation for your function code. Just copy and paste from that file into the AWS Lambda console's editor.
+
+Make sure to configure your function to use the `PA_Lambda_Role` IAM role you created in the previous section.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
@@ -271,20 +429,6 @@ def lambda_handler(event, context):
 <img src="IMAGES/lambda-4.png" alt="drawing" width="500px"/>
 
 4.  Your Lambda Function is **complete**.
-</p></details>
----
-
-### 3. Create an S3 bucket.
-
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-</p></details>
----
-
-### 4. Create DynamoDB tables.
-
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 </p></details>
 ---
 
