@@ -527,12 +527,64 @@ $inputRoot
 </p></details>
 ---
 
-### 6. Set up a Twilio SNS Project.
+### 6. Receiving and sending messages with Twilio
 
+In this module you'll configure Twilio, an API that allows you to interact with your customers via SMS/MMS. In subsequent modules, you will configure Amazon API Gateway and AWS Lambda to load that image into a S3 bucket. Once the image reaches the S3 bucket, another Lambda function will process the image using Amazon Rekognition to extract words from the image and query DynamoDB in search of those words.
+
+
+the services necessary to extract the writing from an image sent to your account via MMS. Then, the application will query DynamoDB in search for the information from the image. If DynamoDB finds the information from the image (words, serial number, etc.) it will trigger a response back to the sender of the MMS.
+
+## Architecture Overview
+
+
+The architecture for this section is very straightforward. Twilio will receive SMS/MMS messages from users and send them on down the stack for processing, For the remainder of the execution, Twilio will remain idle until the image has been processed and a word match has/hasn't been found. At this point>>>>>>>>>>>>>Twilio will interact with the user by asking them whether they want to _________ or ___________<<<<<<<<<<<. Your end users will be able to choose one of the two options, which will result in ________________________ or _________________________
+
+
+If you already have a Twilio account, please proceed to the [next module](URL).
+
+## Implementation Instrutions
+
+Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with Twilion and the AWS Management Console or you want to explore the services yourself without following a walkthrough.
+
+If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
+
+
+
+### Sign up for Twilio Account
+
+In the spirit of full disclosure, Twilio is a pay-as-you-go tool. We decided to use it because its functionality met our use case. If you happen to know about another tool that has the same functionality for free, please email the repo's owners and they will update the information on the repo after testing your suggestions. Any charges incurred by people and teams using Twilio are the responsibility of the tester. The creators of this repo will not be held responsible for any charges incurred by testers of this application.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-1.  Go to https://www.twilio.com/console/sms/dashboard and select **SMS** on the left hand side.  Create a new **Messaging Service** and select **Chat Bot/Interactive 2-Way**.
+
+1. Navigate to [Twilio](https://www.twilio.com/)'s page and click on the [Sign Up](https://www.twilio.com/try-twilio) button.
+
+2. Enter your information
+
+3. Use the drop-down arrow to select your programming language.
+
+4. Check the box next to the phrase "I'm not a robot".
+
+5. Click on the **Get Started** button in the lower left. This will bring up a new page.
+
+6. In the new page, enter your phone number and click the **Verify** button. This will bring up a new page.
+
+7. You will receive text with a verification code. Enter this code in the page where you were registering.
+
+8. Log into your Twilio account.
+
+</p></details>
+
+### 7. Setting up a Twilio SNS Project
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1.  Go to this [Twilio Link](https://www.twilio.com/console/sms/dashboard) and select **SMS** on the left hand side.  Create a new **Messaging Service** and select **Chat Bot/Interactive 2-Way**.
+
+## Implementation Validation
+
+After completing these implementation steps you should be able to TODO
 
 <img src="IMAGES/sns-1.png" alt="drawing" width="400px"/>
 
