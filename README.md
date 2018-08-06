@@ -33,7 +33,7 @@ In this architecture, the customer will start their interaction with the TODO
 
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
 
----
+-----
 
 ### 1. Create an IAM Role for Your Lambda function
 
