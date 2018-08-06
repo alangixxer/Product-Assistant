@@ -1,3 +1,10 @@
+### 1. Create an IAM Role.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+</p></details>
+---
+
 ### 2. Create the lambda funciton.
 
 <details>
@@ -263,7 +270,7 @@ def lambda_handler(event, context):
 
 <img src="IMAGES/lambda-4.png" alt="drawing" width="500px"/>
 
-4.  Your Lambda Function is complete.
+4.  Your Lambda Function is **complete**.
 </p></details>
 ---
 
