@@ -274,6 +274,20 @@ def lambda_handler(event, context):
 </p></details>
 ---
 
+### 3. Create an S3 bucket.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+</p></details>
+---
+
+### 4. Create DynamoDB tables.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+</p></details>
+---
+
 ### 5. Create an Amazon API
 
 Now that our Lambda function has been created and is working. There needs to be an API Gateway integration set up so Lambda can have a path to Twilio.
