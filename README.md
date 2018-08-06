@@ -29,6 +29,8 @@ You can refer to the [region table](https://aws.amazon.com/about-aws/global-infr
 
 In this architecture, the customer will start their interaction with the TODO
 
+<img src="IMAGES/arch-1.png" alt="drawing" width="500px"/>
+
 ----
 
 ### Implementation Instructions
