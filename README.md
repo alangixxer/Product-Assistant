@@ -5,7 +5,7 @@
 
 1.  From the AWS console select **Lamnda** under the compute section.  Click on **Create Function**.  Select **Author from scratch**.  In the **Name** section give the function a unique name to your region.  The **Runtime** is **Python 3.6**.  In the **Role** section, select **Create a custome role** and you will be taken to a new screen.  For the **Existing role** choose the created role from step 1.
 
-![](IMAGES/lambda-1.png
+![](IMAGES/lambda-1.png)
 
 2.  In the new tab, for the *IAM Role** select the role created in section 1.  In **Policy Name**, select **Create a new Role Policy**.  Expand **View Polciy Document**.  Click on the blue **Edit** to the right of the text block.  Copy and paste Policy.json into the code block.  The policy is also copied below.  Click **Allow**.
 
