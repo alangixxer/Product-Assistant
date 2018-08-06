@@ -10,6 +10,7 @@ The application architecture uses [AWS Identity and Access Management (IAM)](htt
 
 In order to complete this workshop you will need an AWS Account with access to create AWS IAM, S3, DynamoDB, Lambda and API Gateway resources. The code and instructions in this workshop assume only one student is using a given AWS account at a time. If you try sharing an account with another student, you'll run into naming conflicts for certain resources. You can work around these by appending a unique suffix to the resources that fail to create due to conflicts, but the instructions do not provide details on the changes required to make this work.
 
+All of the resources you will launch as part of this workshop are eligible for the AWS free tier if your account is less than 12 months old. See the [AWS Free Tier page](https://aws.amazon.com/free/) for more details.
 
 
 ### Region Selection
@@ -75,7 +76,7 @@ Use the Amazon DynamoDB console to create a two DynamoDB tables. You will call y
 
 </p></details>
 
-Your second table will be named 'PA-Products' and its partition key will be `product_id`. Follow the instructions beloW:
+Your second table will be named 'PA-Products' and its partition key will be `product_id`. This table will require atleast on item to be inserted before Product Assistant can function.  Follow the instructions below:
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
@@ -107,11 +108,12 @@ Your second table will be named 'PA-Products' and its partition key will be `pro
 |options              | List            | **See Instructions below**                 |
 
 10. Adding indexes to the list is similar to adding items, but you should make sure they are added to the list. To verify you're doing this correctly, you should confirm the List value is increasing every time you add an item. Below are the indexes of the **options** List:
+
 | Key (left box)      | Data Type       | Value (right box)                          |
 |---------------------|-----------------|--------------------------------------------|
-|0                    | String          | blog										 |
-|1	                  | String          | faqs								         |
-|2	                  | List            | user manual                                |
+|0                    | String          | blog                                       |
+|1	              | String          | faqs                                       |
+|2	              | List            | user manual                                |
 
 11. Verify your items look like the image below:
 ![Create item screenshot](IMAGES/ddb-create-item.png)
