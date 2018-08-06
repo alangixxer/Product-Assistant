@@ -29,7 +29,7 @@ You can refer to the [region table](https://aws.amazon.com/about-aws/global-infr
 
 In this architecture, the customer will start their interaction with the TODO
 
-## Implementation Instructions
+### Implementation Instructions
 
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
 
