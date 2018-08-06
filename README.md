@@ -534,13 +534,7 @@ In this module you'll configure Twilio, an API that allows you to interact with 
 
 the services necessary to extract the writing from an image sent to your account via MMS. Then, the application will query DynamoDB in search for the information from the image. If DynamoDB finds the information from the image (words, serial number, etc.) it will trigger a response back to the sender of the MMS.
 
-## Architecture Overview
-
-
-The architecture for this section is very straightforward. Twilio will receive SMS/MMS messages from users and send them on down the stack for processing, For the remainder of the execution, Twilio will remain idle until the image has been processed and a word match has/hasn't been found. At this point>>>>>>>>>>>>>Twilio will interact with the user by asking them whether they want to _________ or ___________<<<<<<<<<<<. Your end users will be able to choose one of the two options, which will result in ________________________ or _________________________
-
-
-If you already have a Twilio account, please proceed to the [next module](URL).
+If you already have a Twilio account, this section can be skipped.
 
 ## Implementation Instrutions
 
