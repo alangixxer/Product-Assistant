@@ -9,7 +9,7 @@
 
 2.  In the new tab, for the **IAM Role** select the role created in section 1.  In **Policy Name**, select **Create a new Role Policy**.  Expand **View Polciy Document**.  Click on the blue **Edit** to the right of the text block.  Copy and paste Policy.json into the code block.  The policy is also copied below.  Click **Allow**.
 
-<img src="IMAGES/lambda-2.png" alt="drawing" width="500px"/>
+![](IMAGES/lambda-2.png)
 
 ```json
 {
