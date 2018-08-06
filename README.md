@@ -2,6 +2,7 @@
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
 1.  From the AWS console select **Lamnda** under the compute section.  Click on **Create Function**.  Select **Author from scratch**.  In the **Name** section give the function a unique name to your region.  The **Runtime** is **Python 3.6**.  In the **Role** section, select **Create a custome role** and you will be taken to a new screen.  For the **Existing role** choose the created role from step 1.
 
 ![](IMAGES/lambda-1.png
