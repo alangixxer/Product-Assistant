@@ -494,7 +494,7 @@ Now that our Lambda function has been created and is working. There needs to be 
 
 <img src="IMAGES/api-8.png" alt="drawing" width="500px"/>
 
-10. Insert the below **code** into the content box.  This code was suggested by ***https://forums.aws.amazon.com/message.jspa?messageID=675886*** to split our HTTP parameters into JSON key/value pairs.
+10. Insert the below **code** into the content box.  This code was suggested from ***https://forums.aws.amazon.com/message.jspa?messageID=675886*** to split our HTTP parameters into JSON key/value pairs.  Click **Save**.
 
 ```
 #set($httpPost = $input.path('$').split("&"))
@@ -521,37 +521,28 @@ Now that our Lambda function has been created and is working. There needs to be 
 $inputRoot
 ```
 
-13. Click on the **Actions** drop down and select **Deploy API**.  
+13. Click the **Method Response** link.  Under **Response Body for 200**, if `application/json` is defined, remove it.  Add `application/xml` with an `Empty` model and click the **Check Mark**.
+
+14. Click on the **Actions** drop down and select **Deploy API**.  
 
 <img src="IMAGES/api-10.png" alt="drawing" width="200px"/>
 
-14. Select a **New Stage* like **dev**.  Click on **Deploy**.
+15. Select **New Stage**, write a **Stage name** like dev.  Click on **Deploy**.
 
 <img src="IMAGES/api-11.png" alt="drawing" width="500px"/>
 
-15.  Take note of the **Invoke URL**.  Your API is now complete.  Lets test it TODO.
+16. Take note of the **Invoke URL**.  Your API is now complete.
 
 ![](IMAGES/api-12.png)
  
 </p></details>
-
 ---
 
 ### 6. Receiving and sending messages with Twilio
 
 In this module you'll configure Twilio, an API that allows you to interact with your customers via SMS/MMS. In subsequent modules, you will configure Amazon API Gateway and AWS Lambda to load that image into a S3 bucket. Once the image reaches the S3 bucket, another Lambda function will process the image using Amazon Rekognition to extract words from the image and query DynamoDB in search of those words.
 
-
-the services necessary to extract the writing from an image sent to your account via MMS. Then, the application will query DynamoDB in search for the information from the image. If DynamoDB finds the information from the image (words, serial number, etc.) it will trigger a response back to the sender of the MMS.
-
 If you already have a Twilio account, this section can be skipped.
-
-## Implementation Instrutions
-
-Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with Twilion and the AWS Management Console or you want to explore the services yourself without following a walkthrough.
-
-If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
-
 
 
 ### Sign up for Twilio Account
