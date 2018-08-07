@@ -59,6 +59,7 @@ Use the IAM console to create a new role. Name it `PA_Lambda_Role` and select AW
 
 
 </p></details>
+
 ---
 
 ### 2. Create an Amazon DynamoDB Table
@@ -124,6 +125,7 @@ Your second table will be named 'PA-Products' and its partition key will be `pro
 11. Verify your items look like the image below:
 ![Create item screenshot](IMAGES/ddb-create-item.png)
 </p></details>
+
 ---
 
 ### 3. Saving images to Amazon S3
@@ -162,6 +164,7 @@ You can define who can access the content in your S3 buckets using a bucket poli
 By default your bucket will only be accessible by authenticated users with access to your AWS account. We will keep it this way. 
 
 </p></details>
+
 ---
 
 ### 4. Create the lambda funciton
@@ -533,6 +536,7 @@ $inputRoot
 ![](IMAGES/api-12.png)
  
 </p></details>
+
 ---
 
 ### 6. Receiving and sending messages with Twilio
