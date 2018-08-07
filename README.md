@@ -536,6 +536,7 @@ $inputRoot
 ![](IMAGES/api-12.png)
  
 </p></details>
+
 ---
 
 ### 6. Receiving and sending messages with Twilio
@@ -545,7 +546,7 @@ In this module you'll configure Twilio, an API that allows you to interact with 
 If you already have a Twilio account, this section can be skipped.
 
 
-### Sign up for Twilio Account
+#### Sign up for Twilio Account
 
 In the spirit of full disclosure, Twilio is a pay-as-you-go tool. We decided to use it because its functionality met our use case. If you happen to know about another tool that has the same functionality for free, please email the repo's owners and they will update the information on the repo after testing your suggestions. Any charges incurred by people and teams using Twilio are the responsibility of the tester. The creators of this repo will not be held responsible for any charges incurred by testers of this application.
 
@@ -569,6 +570,8 @@ In the spirit of full disclosure, Twilio is a pay-as-you-go tool. We decided to 
 8. Log into your Twilio account.
 
 </p></details>
+
+---
 
 ### 7. Setting up a Twilio SNS Project
 
