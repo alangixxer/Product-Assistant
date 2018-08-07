@@ -439,6 +439,7 @@ def lambda_handler(event, context):
 
 4.  Your Lambda Function is **complete**.
 </p></details>
+
 ---
 
 ### 5. Create an Amazon API
