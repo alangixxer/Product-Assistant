@@ -1,8 +1,8 @@
 # Product Assistant Workshop
 
-In this workshop you will deploy an application that receives a picture of a product, extracts the text from the picture and queries DynamoDB against the text found. If the text matches a DynamoDB entry, it will send the user a message asking them about what kind of information they want to know about the product. Additionally, the application saves the image to a S3 bucket. 
+In this workshop you will deploy an application that receives a picture of a product, extracts the text from the picture and queries a NoSQL database against the text found. If the text matches an entry, it will send the user a message asking them about what kind of information they want to know about the product.
 
-The application architecture uses [AWS Identity and Access Management (IAM)](https://aws.amazon.com/iam/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), [Amazon S3](https://aws.amazon.com/s3/), [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [Twilio](https://www.twilio.com/), an API we will use to send and receive text messages. IAM allows you to set permissions for Lambda to access DynamoDB, your persitencce layer where users and product information will be stored. API Gateway will send the image to S3, where it will be saved.
+The application architecture uses [AWS Identity and Access Management (IAM)](https://aws.amazon.com/iam/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), [Amazon Rekognition](https://aws.amazon.com/rekognition/), [Amazon S3](https://aws.amazon.com/s3/), [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [Twilio](https://www.twilio.com/).
 
 ## Prerequisites
 
@@ -27,8 +27,6 @@ You can refer to the [region table](https://aws.amazon.com/about-aws/global-infr
 
 ## Architecture Overview
 
-In this architecture, the customer will start their interaction with the TODO
-
 <img src="IMAGES/arch-1.png" alt="drawing" width="500px"/>
 
 ----
@@ -48,6 +46,7 @@ Use the IAM console to create a new role. Name it `PA_Lambda_Role` and select AW
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
 1. From the AWS Management Console, click on **Services** and then select **IAM** in the Security, Identity & Compliance section.
 
 2. Select **Roles** in the left navigation bar and then choose **Create new role**.
