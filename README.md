@@ -449,8 +449,6 @@ def lambda_handler(event, context):
 
 Now that our Lambda function has been created and is working. There needs to be an API Gateway integration set up so Lambda can have a path to Twilio.
 
-From API Gateway's Console and your choice of region (it doesn't need to match the Lambda function's region), select 'Create API':
-
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
@@ -482,7 +480,7 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 
 
-7. Select **Post** and click the **check mark**.  For integration type, select **Lambda Function**.  **Use Lambda Proxy integration** should be left unchecked.  The **Region** must be the same as the Product_Assistant Lambda function created earlier.  Select **Product_Assistant** as the **Lambda Function**.  Keep **Use Default Timeout**.  Hit save and accept the warning after it pops up.
+7. Select **Post** and click the **check mark**.  For integration type, select **Lambda Function**.  **Use Lambda Proxy integration** should be left unchecked.  The **Lambda Region** must be the same as the Product_Assistant Lambda function created earlier.  Select **Product_Assistant** as the **Lambda Function**.  Keep **Use Default Timeout**.  Hit save and accept the warning after it pops up.
 
 
 ![](IMAGES/api-6.png)
@@ -492,7 +490,7 @@ From API Gateway's Console and your choice of region (it doesn't need to match t
 
 ![](IMAGES/api-7.png)
 
-9. Once opened, click on **Mapping Templates** at the bottom.  Change **Request body passthrough** to **When there are no templates defined (recommended)**.  Click on the ***plus symbole*** to **Add mapping template**.  Add **application/x-www-form-urlencoded**.  Click the check mark next to the inserted content.  Below, a content box will appear. 
+9. Once opened, click on **Mapping Templates** at the bottom.  Change **Request body passthrough** to **When there are no templates defined (recommended)**.(Note: When no template matches the request might need to be selected if text messages do not go through.)  Click on the ***plus symbole*** to **Add mapping template**.  Add **application/x-www-form-urlencoded**.  Click the check mark next to the inserted content.  Below, a content box will appear. 
 
 <img src="IMAGES/api-8.png" alt="drawing" width="500px"/>
 
