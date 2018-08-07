@@ -577,13 +577,9 @@ In the spirit of full disclosure, Twilio is a pay-as-you-go tool. We decided to 
 
 1.  Go to this [Twilio Link](https://www.twilio.com/console/sms/dashboard) and select **SMS** on the left hand side.  Create a new **Messaging Service** and select **Chat Bot/Interactive 2-Way**.
 
-## Implementation Validation
-
-After completing these implementation steps you should be able to TODO
-
 <img src="IMAGES/sns-1.png" alt="drawing" width="400px"/>
 
-2.  Click the check box on the **Process Inbound Messages**.  Add the **Invoke** URL from the API step and instert it into the **Request URL** text block. 
+2.  Click the check box on the **Process Inbound Messages**.  Add the **Invoke** URL from the API step and instert it into the **Request URL** text block.  Make sure the path includes the **Post** (/sns). 
 
 ![](IMAGES/sns-2.png)
 
@@ -591,8 +587,10 @@ After completing these implementation steps you should be able to TODO
 
 <img src="IMAGES/sns-3.png" alt="drawing" width="200px"/>
 
-4.  Add a number to your project.  You are now able to test **Product Assistant**.
+4.  Add a number to your project and text a picture that has the word **DeepLens** to that number.
+
 </p></details>
+
 ---
 
 **Product Assistant** is complete!
