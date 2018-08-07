@@ -51,7 +51,12 @@ Use the IAM console to create a new role. Name it `PA_Lambda_Role` and select AW
 
 2. Select **Roles** in the left navigation bar and then choose **Create new role**.
 
-TODO
+3. Select **Lambda** as service to use the role. Click **Next: Permissions**.
+
+4. Dont add any permission policies and click **Next: Review**.
+
+5. Give it the role name `PA_Lambda_Role` and click **Create Role**.
+
 
 </p></details>
 ---
@@ -123,7 +128,7 @@ Your second table will be named 'PA-Products' and its partition key will be `pro
 
 ### 3. Saving images to Amazon S3
 
-In this section you'll configure an Amazon Simple Storage Service (S3)  bucket where your images will be saved for later analysis. Your bucket is the location where your uploaded images will gets stored for later analysis. For the purposes of this module you'll use the Amazon S3 website endpoint URL that we supply. It takes the form `http://{your-bucket-name}.s3-website-{region}.amazonaws.com` or `bucket-name.s3-website.region.amazonaws.com` depending on the region you use. 
+In this section you'll configure an Amazon Simple Storage Service (S3)  bucket where your images will be saved for later analysis. Your bucket is the location where your uploaded images will gets stored for later analysis. 
 
 #### Instructions
 
@@ -134,7 +139,7 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 1. In the AWS Management Console choose **Services** then select **S3** under Storage.
 
-1. Choose **+Create Bucket**
+1. Choose **Create Bucket**
 
 1. Provide a globally unique name for your bucket such as `product-assistant-firstname-lastname`.
 
@@ -146,7 +151,7 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 #### Bucket Content
 
-Leave the bucket empty for the time being. We will upload images into it later using Twilio.
+Leave the bucket empty for the time being. We will upload images into it later using Lambda.
 
 #### Access to files uploaded
 
@@ -157,6 +162,7 @@ You can define who can access the content in your S3 buckets using a bucket poli
 By default your bucket will only be accessible by authenticated users with access to your AWS account. We will keep it this way. 
 
 </p></details>
+---
 
 ### 4. Create the lambda funciton
 
@@ -164,18 +170,18 @@ AWS Lambda will do much of the heavy lifting in this application. It will track 
 
 #### Instructions
 
-Use the AWS Lambda console to create a new Lambda function called `lambda_function` that will handle image uploads. Use the provided [lambda_function.py](lambda_function.py) example implementation for your function code. Just copy and paste from that file into the AWS Lambda console's editor.
+Use the AWS Lambda console to create a new Lambda function called `lambda_function` that will handle image uploads. Use the provided code in the Step-by-step instructions.
 
 Make sure to configure your function to use the `PA_Lambda_Role` IAM role you created in the previous section.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
-1.  From the AWS console select **Lamnda** under the compute section.  Click on **Create Function**.  Select **Author from scratch**.  In the **Name** section give the function a unique name to your region.  The **Runtime** is **Python 3.6**.  In the **Role** section, select **Create a custome role** and you will be taken to a new screen.  For the **Existing role** choose the created role from step 1.
+1.  From the AWS console select **Lambda** under the compute section.  Click on **Create Function**.  Select **Author from scratch**.  In the **Name** section give the function a unique name to your region.  The **Runtime** is **Python 3.6**.  In the **Role** section, select **Create a custome role** and you will be taken to a new screen.
 
 ![](IMAGES/lambda-1.png)
 
-2.  In the new tab, for the **IAM Role** select the role created in section 1.  In **Policy Name**, select **Create a new Role Policy**.  Expand **View Polciy Document**.  Click on the blue **Edit** to the right of the text block.  Copy and paste Policy.json into the code block.  The policy is also copied below.  Click **Allow**.
+2.  In the new tab, for the **IAM Role** select the role created in section 1.  In **Policy Name**, select **Create a new Role Policy**.  Expand **View Polciy Document**.  Click on the blue **Edit** to the right of the text block.  Copy and paste Policy.json (also below) into the code block.  The policy is also copied below.  Click **Allow**.
 
 ![](IMAGES/lambda-2.png)
 
@@ -212,7 +218,7 @@ Make sure to configure your function to use the `PA_Lambda_Role` IAM role you cr
 }
 ```
 
-3.  Go back to the **Lambda Function** tab and click **Create function**.  Once the funciton is created, scroll to the **Function code** section like show below.  **Delete** the example function and copy and paste the code from Lambda.py.  The code is also shown below the image.  Click **save** and you should see no errors.
+3.  Go back to the **Lambda Function** tab and click **Create function**.  Once the funciton is created, scroll to the **Function code** section like show below.  **Delete** the example function and copy and paste the code from Lambda.py (also below).  Do a word search for "your s3 bucket" and change the s3 bucket name to yours.  Click **save**.  You should see no errors.
 
 ![](IMAGES/lambda-3.png)
 
