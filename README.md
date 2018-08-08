@@ -590,7 +590,9 @@ In the spirit of full disclosure, Twilio is a pay-as-you-go tool. We decided to 
 
 <img src="IMAGES/sns-3.png" alt="drawing" width="200px"/>
 
-4.  Add a number to your project and text a picture that has the word **DeepLens** to that number.
+4.  Add a number to your project and text a picture that has the word **DeepLens** (like below) to the number you added.
+
+<img src="IMAGES/deeplens.png" alt="drawing" width="400px"/>
 
 </p></details>
 
