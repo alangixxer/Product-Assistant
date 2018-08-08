@@ -161,15 +161,15 @@ You can define who can access the content in your S3 buckets using a bucket poli
 
 #### Access to your bucket
 
-By default your bucket will only be accessible by authenticated users with access to your AWS account. We will keep it this way. 
+By default, your bucket will only be accessible by authenticated users with access to your AWS account. We will keep it this way. 
 
 </p></details>
 
 ---
 
-### 4. Create the lambda funciton
+### 4. Create the lambda function
 
-AWS Lambda will do much of the heavy lifting in this application. It will track the status of the communication with Twillio, save the image to S3 and ensure Rekognition extracts text from the image. Additionally, it will query DynamoDB in search for word matches.
+AWS Lambda will do much of the heavy lifting in this application. It will track the status of the communication with Twilio, save the image to S3 and ensure Rekognition extracts text from the image. Additionally, it will query DynamoDB in search for word matches.
 
 #### Instructions
 
@@ -180,11 +180,11 @@ Make sure to configure your function to use the `PA_Lambda_Role` IAM role you cr
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
-1.  From the AWS console select **Lambda** under the compute section.  Click on **Create Function**.  Select **Author from scratch**.  In the **Name** section give the function a unique name to your region.  The **Runtime** is **Python 3.6**.  In the **Role** section, select **Create a custome role** and you will be taken to a new screen.
+1.  From the AWS console select **Lambda** under the compute section.  Click on **Create Function**.  Select **Author from scratch**.  In the **Name** section give the function a unique name to your region.  The **Runtime** is **Python 3.6**.  In the **Role** section, select **Create a custom role** and you will be taken to a new screen.
 
 ![](IMAGES/lambda-1.png)
 
-2.  In the new tab, for the **IAM Role** select the role created in section 1.  In **Policy Name**, select **Create a new Role Policy**.  Expand **View Polciy Document**.  Click on the blue **Edit** to the right of the text block.  Copy and paste Policy.json (also below) into the code block.  The policy is also copied below.  Click **Allow**.
+2.  In the new tab, for the **IAM Role** select the role created in section 1.  In **Policy Name**, select **Create a new Role Policy**.  Expand **View Policy Document**.  Click on the blue **Edit** to the right of the text block.  Copy and paste Policy.json (also below) into the code block.  The policy is also copied below.  Click **Allow**.
 
 ![](IMAGES/lambda-2.png)
 
@@ -221,7 +221,7 @@ Make sure to configure your function to use the `PA_Lambda_Role` IAM role you cr
 }
 ```
 
-3.  Go back to the **Lambda Function** tab and click **Create function**.  Once the funciton is created, scroll to the **Function code** section like show below.  **Delete** the example function and copy and paste the code from Lambda.py (also below).  Do a word search for "your s3 bucket" and change the s3 bucket name to yours.  Click **save**.  You should see no errors.
+3.  Go back to the **Lambda Function** tab and click **Create function**.  Once the function is created, scroll to the **Function code** section like show below.  **Delete** the example function and copy and paste the code from Lambda.py (also below).  Do a word search for "your s3 bucket" and change the s3 bucket name to yours.  Click **save**.  You should see no errors.
 
 ![](IMAGES/lambda-3.png)
 
@@ -473,7 +473,7 @@ Now that our Lambda function has been created and is working. There needs to be 
 ![](IMAGES/api-4.png)
 
 
-6. Click on the newly created resouce and click on **Actions**.  Select **Create Method**.
+6. Click on the newly created resource and click on **Actions**.  Select **Create Method**.
 
 
 <img src="IMAGES/api-5.png" alt="drawing" width="500px"/>
@@ -490,7 +490,7 @@ Now that our Lambda function has been created and is working. There needs to be 
 
 ![](IMAGES/api-7.png)
 
-9. Once opened, click on **Mapping Templates** at the bottom.  Change **Request body passthrough** to **When there are no templates defined (recommended)**.(Note: When no template matches the request might need to be selected if text messages do not go through.)  Click on the ***plus symbole*** to **Add mapping template**.  Add **application/x-www-form-urlencoded**.  Click the check mark next to the inserted content.  Below, a content box will appear. 
+9. Once opened, click on **Mapping Templates** at the bottom.  Change **Request body passthrough** to **When there are no templates defined (recommended)**.(Note: When no template matches the request might need to be selected if text messages do not go through.)  Click on the ***plus symbol*** to **Add mapping template**.  Add **application/x-www-form-urlencoded**.  Click the check mark next to the inserted content.  Below, a content box will appear. 
 
 <img src="IMAGES/api-8.png" alt="drawing" width="500px"/>
 
@@ -514,7 +514,7 @@ Now that our Lambda function has been created and is working. There needs to be 
 
 ![](IMAGES/api-9.png)
 
-12. Click on **add mapping template** and insert **application/xml**. Click the check mark.  Enter the below **code** into the context box. This will allow only the Lambda return fuction to pass through.
+12. Click on **add mapping template** and insert **application/xml**. Click the check mark.  Enter the below **code** into the context box. This will allow only the Lambda return function to pass through.
 
 ```
 #set($inputRoot = $input.path('$')) 
@@ -582,11 +582,11 @@ In the spirit of full disclosure, Twilio is a pay-as-you-go tool. We decided to 
 
 <img src="IMAGES/sns-1.png" alt="drawing" width="400px"/>
 
-2.  Click the check box on the **Process Inbound Messages**.  Add the **Invoke** URL from the API step and instert it into the **Request URL** text block.  Make sure the path includes the **Post** (/sns). 
+2.  Click the check box on the **Process Inbound Messages**.  Add the **Invoke** URL from the API step and insert it into the **Request URL** text block.  Make sure the path includes the **Post** (/sns). 
 
 ![](IMAGES/sns-2.png)
 
-3.  Click on **Numbers** on the left hand side.
+3.  Click on **Numbers** on the left hand-side.
 
 <img src="IMAGES/sns-3.png" alt="drawing" width="200px"/>
 
